@@ -1,0 +1,18 @@
+{{!-- template-lint-disable block-indentation --}}
+
+
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h6 class="modal-title">{{@title}}</h6>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+    </div>
+    <div class="modal-body">
+      {{@dialogBody}}
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-danger" type="button" data-bs-dismiss="modal">Cancel</button>
+      {{yield}}
+    </div>
+  </div>
+</div>

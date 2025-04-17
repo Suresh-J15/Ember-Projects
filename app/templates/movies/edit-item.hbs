@@ -1,0 +1,10 @@
+{{!-- template-lint-disable no-log --}}
+{{!-- template-lint-disable block-indentation --}}
+
+{{#if this.model}}
+<MovieForm @confirmDialog={{"Are you sure, you want to edit the details of the movie item?"}} @isNew={{false}}
+  @title="Edit Movie" @exit={{action "returnToDetails" }} @model={{this.model}} @saveOption={{action "editMovieItem" }}>
+</MovieForm>
+{{/if}}
+
+{{outlet}}

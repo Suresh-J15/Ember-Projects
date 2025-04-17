@@ -23,3 +23,13 @@
 /.node_modules.ember-try/
 /bower.json.ember-try
 /package.json.ember-try
+
+
+
+dist/
+tmp/
+.log
+.env
+coverage/
+bower_components/
+.DS_Store

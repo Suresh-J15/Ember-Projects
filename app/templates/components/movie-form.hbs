@@ -1,0 +1,124 @@
+{{!-- template-lint-disable no-log --}}
+{{!-- template-lint-disable block-indentation --}}
+
+<h2 class="text-center my-3">{{this.title}}</h2>
+
+<form class="col-12 col-lg-6 mx-auto rounded-3 p-3 p-lg-5 border {{if this.isNew " border-success" "border-info" }}">
+
+  {{!-- MovieTitle --}}
+  <fieldset class="my-4">
+    <label class="form-label ms-2 mb-1" for="movie-name">
+      Movie Name
+      <span class="text-danger">*</span>
+    </label>
+    <Input class="form-control" @type="text" @name="movieTitle" @id="movie-name" @value={{this.model.movieTitle}}
+      @required={{true}} />
+  </fieldset>
+
+  {{!-- Release Date --}}
+  <fieldset class="my-4">
+    <label class="form-label ms-2 mb-1" for="release-date">
+      Release Date
+      <span class="text-danger">*</span>
+    </label>
+    <Input class="form-control" @type="date" @name="releaseDate" @id="release-date" @value={{this.model.releaseDate}}
+      @required={{true}} />
+  </fieldset>
+
+  {{!-- Director --}}
+  <fieldset class="my-4">
+    <label class="form-label ms-2 mb-1" for="director">
+      Directed by
+      <span class="text-danger">*</span>
+    </label>
+    <Input class="form-control" @type="text" @name="directedBy" @id="director" @value={{this.model.directedBy}}
+      @required={{true}} />
+  </fieldset>
+
+  {{!-- IMDB Rating --}}
+  <fieldset class="my-4">
+    <label class="form-label ms-2 mb-1" for="imdb-rating">
+      IMDB Rating: {{!-- <small class="text-secondary"> Out of 100, multiply by 10 </small> --}}
+    </label>
+    <Input class="form-control" @type="number" @name="imdbRating" id="imdb-rating" @value={{this.model.imdbRating}} />
+  </fieldset>
+
+  {{!-- Movie Ratings --}}
+  <fieldset class="my-4">
+    <legend>Select the movie rating</legend>
+    <label for="rb1" class="me-3">
+      <Input @type="radio" @name="movie-rating" @id="rb1" value="G" @checked={{false}} onchange={{action "setRating" "G"
+        }} class="me-2" />G
+    </label>
+    <label for="rb2" class="me-3">
+      <Input @type="radio" @name="movie-rating" @id="rb2" value="PG" @checked={{false}}
+        onchange={{action "setRating" "PG" }} class="me-2" />PG
+    </label>
+    <label for="rb3" class="me-3">
+      <Input @type="radio" @name="movie-rating" @id="rb3" value="PG-13" @checked={{false}}
+        onchange={{action "setRating" "PG-13" }} class="me-2" />PG-13
+    </label>
+    <label for="rb4" class="me-3">
+      <Input @type="radio" @name="movie-rating" @id="rb4" value="R" @checked={{false}} onchange={{action "setRating" "R"
+        }} class="me-2" />R
+    </label>
+    <label for="rb5" class="me-3">
+      <Input @type="radio" @name="movie-rating" @id="rb5" value="NC-17" @checked={{false}}
+        onchange={{action "setRating" "NC-17" }} class="me-2" />NC-17
+    </label>
+  </fieldset>
+
+  {{!-- Genres --}}
+  <fieldset class="my-4">
+    <legend>Select the genres</legend>
+
+    <label for="cb1" class="me-3">
+      <Input @type="checkbox" name="genres" value="Action" @id="cb1" @checked={{includes "Action" this.model.genres }}
+        onchange={{action "toggleGenres" "Action" }} class="me-1" />Action
+    </label>
+    <label for="cb2" class="me-3">
+      <Input @type="checkbox" name="genres" value="Comedy" @id="cb2" @checked={{includes "Comedy" this.model.genres }}
+        onchange={{action "toggleGenres" "Comedy" }} class="me-1" />Comedy
+    </label>
+    <label for="cb3" class="me-3">
+      <Input @type="checkbox" name="genres" value="Drama" @id="cb3" @checked={{includes "Drama" this.model.genres }}
+        onchange={{action "toggleGenres" "Drama" }} class="me-1" />Drama
+    </label>
+    <label for="cb4" class="me-3">
+      <Input @type="checkbox" name="genres" value="Fantasy" @id="cb4" @checked={{includes "Fantasy" this.model.genres }}
+        onchange={{action "toggleGenres" "Fantasy" }} class="me-1" />Fantasy
+    </label>
+    <label for="cb5" class="me-3">
+      <Input @type="checkbox" name="genres" value="Psychological" @id="cb5" class="me-1"
+        onchange={{action "toggleGenres" "Psychological" }} @checked={{includes "Psychological" this.model.genres
+        }} />Psychological
+    </label>
+    <label for="cb6" class="me-3">
+      <Input @type="checkbox" name="genres" value="Sports" @id="cb6" @checked={{includes "Sports" this.model.genres }}
+        onchange={{action "toggleGenres" "Sports" }} class="me-1" />Sports
+    </label>
+    <label for="cb7" class="me-3">
+      <Input @type="checkbox" name="genres" value="Thriller" @id="cb7" onchange={{action "toggleGenres" "Thriller" }}
+        class="me-1" @checked={{includes "Thriller" this.model.genres }} />Thriller
+    </label>
+  </fieldset>
+
+  {{!-- Description --}}
+  <fieldset class="my-4">
+    <label class="form-label ms-2 mb-1" for="description">Desciption</label>
+    <Textarea class="w-100 px-3 py-2 rounded-3" @name="description" @id="description"
+      @value={{this.model.description}} />
+  </fieldset>
+
+  <fieldset class="d-flex gap-3">
+    <button class="btn btn-danger" {{action "exit" }}>Cancel</button>
+    <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#confirmDialog">
+      Save</button>
+  </fieldset>
+
+  <ConfirmDialog id="confirmDialog" @title={{this.title}} @dialogBody={{this.confirmDialog}}>
+    <button class="btn btn-success" data-bs-dismiss="modal" type={{"submit"}}>Confirm</button>
+  </ConfirmDialog>
+</form>
+
+{{yield}}

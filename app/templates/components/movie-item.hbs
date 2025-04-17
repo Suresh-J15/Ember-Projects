@@ -1,0 +1,34 @@
+{{!-- template-lint-disable no-log --}}
+{{!-- template-lint-disable block-indentation --}}
+
+
+<div class="d-flex justify-content-between">
+  <p>Movie Item</p>
+  <button class="btn-close" {{action "closeItem" }}></button>
+</div>
+
+<div class="ratio-5x3 d-flex justify-content-center my-3">
+  <img class="mw-100 mh-100 mx-auto ratio-9x16 bg-info" src={{this.model.poster}} alt={{this.model.movieTitle}}>
+</div>
+
+<h2 class="text-center">{{this.model.movieTitle}}</h2>
+<p class="text-center">Realeased on: {{this.model.releaseDate}}</p>
+<p class="lh-lg text-center">
+  {{#each this.model.genres as |genre|}}
+  <span class="py-1 px-2 bg-secondary-subtle rounded-1">{{genre}}</span>
+  {{/each}}
+</p>
+
+<div class="row my-5 w-75 mx-auto gap-3">
+  <p class="col text-center display-6 border border-3 border-dark p-2">{{this.model.rating}}</p>
+  <div class="col-12 col-xl-6 mx-auto">
+    <Rating @imdb={{this.model.imdbRating}}></Rating>
+  </div>
+</div>
+
+<p class="w-75 mx-auto text-center border border-dark rounded-3 p-4">
+  <b>Description: </b>
+  {{this.model.description}}
+</p>
+
+{{yield}}

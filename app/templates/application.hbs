@@ -1,5 +1,12 @@
 {{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
 {{!-- Feel free to remove this! --}}
+
+
+<header class="position-sticky z-2 top-0">
+  <h1 class="bg-dark text-center py-3 my-0 text-light">Movies</h1>
+  <div class="container-fluid bg-light border-bottom border-secondary p-3 clearfix z-2">
+    <button class="btn btn-primary px-3 float-end" {{action "addNewMovieItem" }}>New</button>
+  </div>
+</header>
 
 {{outlet}}

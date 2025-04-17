@@ -1,0 +1,8 @@
+{{!-- template-lint-disable no-log --}}
+{{!-- template-lint-disable block-indentation --}}
+
+<MovieForm @confirmDialog={{"Are you sure, you want to add the new movie item?"}} @model={{this.model}}
+  @title="Create New Item" @exit={{action "returnToList" }} @saveOption={{action "addMovieItem" }}>
+</MovieForm>
+
+{{outlet}}

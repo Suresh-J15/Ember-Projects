@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  font-size: 18px;
+}
+
+.top-20 {
+  top: 170px;
+}
+
+legend {
+  font-size: 1rem !important;
+}
+
+textarea {
+  resize: none !important;
+  vertical-align: top;
+  height: 80px;
+}
+
+.ratio-5x3 {
+  aspect-ratio: 5/3;
+}
+
+.ratio-9x16 {
+  aspect-ratio: 9/16;
+}
+
+.list-item {
+  /* background: linear-gradient(to right, #2D68C4, #87CEFA); */
+  cursor: pointer;
+}
