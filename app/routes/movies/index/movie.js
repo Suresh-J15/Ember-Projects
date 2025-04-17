@@ -25,12 +25,6 @@ export default Route.extend({
   },
 
   actions: {
-    // willTransition(transition) {
-    //   if (transition.to.name === "movies.index.index") {
-    //     this.list.set('fullWidth', true);
-    //   }
-    // },
-
     deleteMovieItem() {
       this.controller.model.destroyRecord();
       this.list.set('fullWidth', true);
